@@ -59,7 +59,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 
 			if (options.text) {
 				ctx.textBaseline = 'middle';
-				ctx.font = options.fontSize + ' ' + '\'' + options.fontType + '\'';
+				ctx.font = options.fontSize + ' \'' + options.fontType + '\'';
 				ctx.fillText(options.text, 50, 50);
 			}
 
