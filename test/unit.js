@@ -14,7 +14,7 @@ test('mergeImages returns correct data URI', async t => {
 	const b64 = await mergeImages([image], { Canvas, Image });
 
 	const expectedB64 = await fixtures.getDataURI('face.png');
-
+	console.log(typeof (b64), typeof (expectedB64));
 	t.true(b64 === expectedB64);
 });
 
@@ -29,7 +29,7 @@ test('mergeImages returns correct data URI', async t => {
 		});
 
 		const expectedB64 = await fixtures.getDataURI(`face.${format}`);
-
+		console.log(typeof (b64), typeof (expectedB64));
 		t.true(b64 === expectedB64);
 	});
 });
@@ -40,7 +40,7 @@ test('mergeImages correctly merges images', async t => {
 	const b64 = await mergeImages(images, { Canvas, Image });
 
 	const expectedB64 = await fixtures.getDataURI('face.png');
-
+	console.log(typeof (b64), typeof (expectedB64));
 	t.true(b64 === expectedB64);
 });
 
@@ -55,7 +55,7 @@ test('mergeImages uses custom dimensions', async t => {
 	});
 
 	const expectedB64 = await fixtures.getDataURI('face-custom-dimension.png');
-
+	console.log(typeof (b64), typeof (expectedB64));
 	t.true(b64 === expectedB64);
 });
 
@@ -72,7 +72,7 @@ test('mergeImages uses custom positions', async t => {
 	const b64 = await mergeImages(images, { Canvas, Image });
 
 	const expectedB64 = await fixtures.getDataURI('face-custom-positions.png');
-
+	console.log(typeof (b64), typeof (expectedB64));
 	t.true(b64 === expectedB64);
 });
 
@@ -87,7 +87,7 @@ test('mergeImages uses custom jpeg quality', async t => {
 	});
 
 	const expectedB64 = await fixtures.getDataURI('face-low-quality.jpeg');
-
+	console.log(typeof (b64), typeof (expectedB64));
 	t.true(b64 === expectedB64);
 });
 
@@ -104,6 +104,6 @@ test('mergeImages uses opacity', async t => {
 	const b64 = await mergeImages(images, { Canvas, Image });
 
 	const expectedB64 = await fixtures.getDataURI('face-opacity.png');
-
+	console.log(typeof (b64), typeof (expectedB64));
 	t.true(b64 === expectedB64);
 });
