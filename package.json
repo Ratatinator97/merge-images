@@ -1,7 +1,7 @@
 {
   "name": "merge-images-horizontally-with-text",
   "version": "1.0.0",
-  "description": "Assemble horizontally images and write text !",
+  "description": "Assemble horizontally images and write text ! Forket from the original merge-images",
   "main": "dist/index.umd.js",
   "module": "dist/index.es2015.js",
   "files": [
