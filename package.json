@@ -39,7 +39,6 @@
     "url": "https://github.com/lukechilds/merge-images/issues"
   },
   "homepage": "https://github.com/lukechilds/merge-images",
-  "dependencies": {},
   "devDependencies": {
     "ava": "^0.25.0",
     "camelcase": "^5.0.0",

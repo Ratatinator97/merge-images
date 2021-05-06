@@ -8,8 +8,8 @@ const defaultOptions = {
 	crossOrigin: undefined,
 	color: undefined,
 	text: undefined,
-	fontSize: "50px",
-	fontType: "Montserrat"
+	fontSize: '50px',
+	fontType: 'Montserrat'
 };
 
 // Return Promise
@@ -51,16 +51,15 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 				ctx.globalAlpha = image.opacity ? image.opacity : 1;
 				return ctx.drawImage(image.img, image.x || 0, image.y || 0);
 			});
-			if( options.color ) {
-				
+
+			if (options.color) {
 				ctx.fillStyle = options.color;
 				ctx.fillRect(0, 0, canvas.width, canvas.height);
 			}
-		
-			if( options.text ) {
-			
+
+			if (options.text) {
 				ctx.textBaseline = 'middle';
-				ctx.font = options.fontSize+" "+"'"+options.fontType+"'";
+				ctx.font = options.fontSize + ' ' + '\'' + options.fontType + '\'';
 				ctx.fillText(options.text, 50, 50);
 			}
 
