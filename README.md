@@ -174,6 +174,33 @@ Default: `undefined`
 
 The `crossOrigin` attribute that `Image` instances should use. e.g `Anonymous` to [support CORS-enabled images](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image).
 
+##### options.color
+
+Type `CSS Color` <br>
+default: `white`
+
+The `color` background that  the final image will have.
+##### options.text
+
+Type `string` <br>
+Default: `undefined`
+
+The text that will be written in the final image.
+
+##### options.fontSize
+
+Type `string` <br>
+Default: `50px`
+
+The fontsize of the text.
+
+##### options.fontType
+
+Type `string` <br>
+Default: `Montserrat`
+
+The font used to write the text
+
 ## License
 
 MIT © Luke Childs
