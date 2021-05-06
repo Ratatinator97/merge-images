@@ -2,8 +2,8 @@
 
 > Easily compose images together without messing around with canvas
 
-[![Build Status](https://travis-ci.org/lukechilds/merge-images.svg?branch=master)](https://travis-ci.org/lukechilds/merge-images)
-[![Coverage Status](https://coveralls.io/repos/github/lukechilds/merge-images/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/merge-images?branch=master)
+[![Build Status](https://travis-ci.org/Ratatinator97/merge-images.svg?branch=master)](https://travis-ci.org/lukechilds/merge-images)
+[![Coverage Status](https://coveralls.io/repos/github/Ratatinator97/merge-images/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/merge-images?branch=master)
 [![npm](https://img.shields.io/npm/dm/merge-images.svg)](https://www.npmjs.com/package/merge-images)
 [![npm](https://img.shields.io/npm/v/merge-images.svg)](https://www.npmjs.com/package/merge-images)
 
@@ -203,4 +203,4 @@ The font used to write the text
 
 ## License
 
-MIT © Luke Childs
+MIT © Luke Childs + Alexandros SIDIRAS
