@@ -44,7 +44,7 @@ test('mergeImages returns correct data URI2', async t => {
 		Image: Image,
 		crossOrigin: 'Anonymous',
 		color: 'white',
-		fontColor: 'black',
+		fontColor: 'red',
 		fontSize: '50px',
 		fontType: 'Montserrat',
 		text: 'Hello text'
