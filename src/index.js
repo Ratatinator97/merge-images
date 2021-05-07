@@ -97,24 +97,3 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 });
 
 export default mergeImages;
-
-/*
-const { Canvas, Image } = require('canvas');
-const fs = require("fs");
-let urls = ["../test/fixtures/want.png", "../test/fixtures/eat.png", "../test/fixtures/fries.png"];
-mergeImages(urls, {
-	Canvas: Canvas,
-	Image: Image,
-	crossOrigin: 'Anonymous',
-	color: 'white',
-	fontColor: 'red',
-	fontSize: '50px',
-	fontType: 'Montserrat',
-	text: 'Hello text'
-})
-	.then(b64 => {
-		var base64Data = b64.replace(/^data:image\/png;base64,/, "");
-		fs.writeFile("out.png", base64Data, 'base64', function (err) {
-			console.log(err);
-		});
-	}); */
