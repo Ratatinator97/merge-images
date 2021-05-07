@@ -7,7 +7,8 @@ const defaultOptions = {
 	color: undefined,
 	text: undefined,
 	fontSize: '36px',
-	fontType: 'Serif'
+	fontType: 'Serif',
+	fontColor: 'black'
 };
 
 // Return Promise
@@ -42,32 +43,36 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 			let maxheight = 0;
 			let x_value_of_image = 0;
 
+			// Determine the height of the canvas
+			// Determine the x coordinate of every image
 			for (var i = 0; i < images.length; i++) {
 				images[i] = Object.assign(images[i], { x: x_value_of_image, y: 0 });
-				if (images[i].height >= height) {
-					maxheight = images[i].height;
+				if (images[i].img.height >= maxheight) {
+					maxheight = images[i].img.height;
 				}
-				x_value_of_image += images[i].width;
+				x_value_of_image += images[i].img.width;
 			}
 			// Set canvas dimensions
-			canvas.width = maxheight;
-			canvas.height = x_value_of_image;
+			canvas.width = x_value_of_image;
+			canvas.height = maxheight;
 
+			// Fill the background of the canvas with color
+			if (options.color) {
+				ctx.fillStyle = options.color;
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+			}
 			// Draw images to canvas
 			images.forEach(image => {
 				ctx.globalAlpha = image.opacity ? image.opacity : 1;
 				return ctx.drawImage(image.img, image.x || 0, image.y || 0);
 			});
 
-			if (options.color) {
-				ctx.fillStyle = options.color;
-				ctx.fillRect(0, 0, canvas.width, canvas.height);
-			}
-
+			// Write text to the bottom of the canvas
 			if (options.text) {
+				ctx.fillStyle = options.fontColor;
 				ctx.textBaseline = 'bottom';
 				ctx.font = options.fontSize + ' \'' + options.fontType + '\'';
-				ctx.fillText(options.text, 50, (canvas.height) * (4 / 5));
+				ctx.fillText(options.text, 50, (canvas.height) * (9 / 10));
 			}
 
 			if (options.Canvas && options.format === 'image/jpeg') {
@@ -92,3 +97,24 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 });
 
 export default mergeImages;
+
+/*
+const { Canvas, Image } = require('canvas');
+const fs = require("fs");
+let urls = ["../test/fixtures/want.png", "../test/fixtures/eat.png", "../test/fixtures/fries.png"];
+mergeImages(urls, {
+	Canvas: Canvas,
+	Image: Image,
+	crossOrigin: 'Anonymous',
+	color: 'white',
+	fontColor: 'red',
+	fontSize: '50px',
+	fontType: 'Montserrat',
+	text: 'Hello text'
+})
+	.then(b64 => {
+		var base64Data = b64.replace(/^data:image\/png;base64,/, "");
+		fs.writeFile("out.png", base64Data, 'base64', function (err) {
+			console.log(err);
+		});
+	}); */

@@ -7,6 +7,53 @@ test('mergeImages returns empty b64 string if nothing is passed in', async t => 
 	t.plan(1);
 	await mergeImages([], { Canvas, Image }).then(b64 => t.true(b64 === 'data:,'));
 });
+
+test('mergeImages returns correct data URI', async t => {
+	t.plan(1);
+	const uris = ['want.png', 'eat.png', 'fries.png'];
+	let imagePromises = uris.map((uri) => {
+		return fixtures.getImage(uri)
+	});
+
+	let images = await Promise.all(imagePromises);
+
+	const b64 = await mergeImages(images, {
+		Canvas: Canvas,
+		Image: Image,
+		crossOrigin: 'Anonymous',
+		color: 'white',
+		text: 'Hello text'
+	});
+
+	const expectedB64 = await fixtures.getDataURI('result.png');
+
+	t.true(b64 === expectedB64);
+});
+
+test('mergeImages returns correct data URI2', async t => {
+	t.plan(1);
+	const uris = ['want.png', 'eat.png', 'fries.png'];
+	let imagePromises = uris.map((uri) => {
+		return fixtures.getImage(uri)
+	});
+
+	let images = await Promise.all(imagePromises);
+
+	const b64 = await mergeImages(images, {
+		Canvas: Canvas,
+		Image: Image,
+		crossOrigin: 'Anonymous',
+		color: 'white',
+		fontColor: 'black',
+		fontSize: '50px',
+		fontType: 'Montserrat',
+		text: 'Hello text'
+	});
+
+	const expectedB64 = await fixtures.getDataURI('result2.png');
+
+	t.true(b64 === expectedB64);
+});
 /*
 test('mergeImages returns correct data URI', async t => {
 	t.plan(1);
@@ -32,48 +79,6 @@ test('mergeImages returns correct data URI', async t => {
 
 		t.true(b64 === expectedB64);
 	});
-});
-
-test('mergeImages correctly merges images', async t => {
-	t.plan(1);
-	const images = await Promise.all(['body.png', 'mouth.png', 'eyes.png'].map(image => fixtures.getImage(image)));
-	const b64 = await mergeImages(images, { Canvas, Image });
-
-	const expectedB64 = await fixtures.getDataURI('face.png');
-
-	t.true(b64 === expectedB64);
-});
-
-test('mergeImages uses custom dimensions', async t => {
-	t.plan(1);
-	const image = await fixtures.getImage('face.png');
-	const b64 = await mergeImages([image], {
-		width: 128,
-		height: 128,
-		Canvas,
-		Image
-	});
-
-	const expectedB64 = await fixtures.getDataURI('face-custom-dimension.png');
-
-	t.true(b64 === expectedB64);
-});
-
-test('mergeImages uses custom positions', async t => {
-	t.plan(1);
-	const images = await Promise.all([
-		{ src: 'body.png', x: 0, y: 0 },
-		{ src: 'eyes.png', x: 32, y: 0 },
-		{ src: 'mouth.png', x: 16, y: 0 }
-	].map(image => fixtures.getImage(image.src).then(src => {
-		image.src = src;
-		return image;
-	})));
-	const b64 = await mergeImages(images, { Canvas, Image });
-
-	const expectedB64 = await fixtures.getDataURI('face-custom-positions.png');
-
-	t.true(b64 === expectedB64);
 });
 
 test('mergeImages uses custom jpeg quality', async t => {
