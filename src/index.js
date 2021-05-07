@@ -2,14 +2,12 @@
 const defaultOptions = {
 	format: 'image/png',
 	quality: 0.92,
-	width: undefined,
-	height: undefined,
 	Canvas: undefined,
 	crossOrigin: undefined,
 	color: undefined,
 	text: undefined,
-	fontSize: '50px',
-	fontType: 'Montserrat'
+	fontSize: '36px',
+	fontType: 'Serif'
 };
 
 // Return Promise
@@ -41,10 +39,19 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 	// When sources have loaded
 	resolve(Promise.all(images)
 		.then(images => {
+			let maxheight = 0;
+			let x_value_of_image = 0;
+
+			for (var i = 0; i < images.length; i++) {
+				images[i] = Object.assign(images[i], { x: x_value_of_image, y: 0 });
+				if (images[i].height >= height) {
+					maxheight = images[i].height;
+				}
+				x_value_of_image += images[i].width;
+			}
 			// Set canvas dimensions
-			const getSize = dim => options[dim] || Math.max(...images.map(image => image.img[dim]));
-			canvas.width = getSize('width');
-			canvas.height = getSize('height');
+			canvas.width = maxheight;
+			canvas.height = x_value_of_image;
 
 			// Draw images to canvas
 			images.forEach(image => {
@@ -58,9 +65,9 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 			}
 
 			if (options.text) {
-				ctx.textBaseline = 'middle';
+				ctx.textBaseline = 'bottom';
 				ctx.font = options.fontSize + ' \'' + options.fontType + '\'';
-				ctx.fillText(options.text, 50, 50);
+				ctx.fillText(options.text, 50, (canvas.height) * (4 / 5));
 			}
 
 			if (options.Canvas && options.format === 'image/jpeg') {
