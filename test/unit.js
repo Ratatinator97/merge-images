@@ -27,7 +27,7 @@ test('mergeImages returns correct data URI', async t => {
 
 	const expectedB64 = await fixtures.getDataURI('result.png');
 
-	t.true(b64 === expectedB64);
+	t.true(b64.trim() === expectedB64.trim());
 });
 
 test('mergeImages returns correct data URI2', async t => {
@@ -51,9 +51,6 @@ test('mergeImages returns correct data URI2', async t => {
 	});
 
 	const expectedB64 = await fixtures.getDataURI('result2.png');
-	console.log(b64);
-	console.log(expectedB64);
-	console.log(typeof b64);
-	console.log(typeof expectedB64);
-	t.true(b64 === expectedB64);
+
+	t.true(b64.trim() === expectedB64.trim());
 });
