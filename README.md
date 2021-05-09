@@ -1,6 +1,6 @@
-# merge-images
+# merge-images-horizontally-with-text
 
-> Easily compose images horizontally and add text
+> Easily compose images horizontally and add customizable text
 
 [![Build Status](https://github.com/Ratatinator97/merge-images/actions/workflows/node.js.yml/badge.svg)](https://github.com/Ratatinator97/merge-images/actions/workflows/node.js.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Ratatinator97/merge-images/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/merge-images?branch=master)
