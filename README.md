@@ -1,6 +1,6 @@
 # merge-images
 
-> Easily compose images together without messing around with canvas
+> Easily compose images horizontally and add text
 
 [![Build Status](https://travis-ci.org/Ratatinator97/merge-images.svg?branch=master)](https://travis-ci.org/lukechilds/merge-images)
 [![Coverage Status](https://coveralls.io/repos/github/Ratatinator97/merge-images/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/merge-images?branch=master)
