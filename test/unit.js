@@ -1,7 +1,8 @@
 import test from 'ava';
-import { Canvas, Image } from 'canvas';
-import mergeImages from '../';
-import fixtures from './fixtures';
+import canvas from "canvas";
+const { Canvas, Image } = canvas;
+import mergeImages from '../src/index.js';
+import * as fixtures from './fixtures/index.js';
 
 test('mergeImages returns empty b64 string if nothing is passed in', async t => {
 	t.plan(1);
@@ -38,7 +39,6 @@ test('mergeImages returns correct data URI2', async t => {
 	});
 
 	let images = await Promise.all(imagePromises);
-
 	const b64 = await mergeImages(images, {
 		Canvas: Canvas,
 		Image: Image,

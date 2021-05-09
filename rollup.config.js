@@ -1,5 +1,4 @@
-import buble from 'rollup-plugin-buble';
-import camelCase from 'camelcase';
+import buble from '@rollup/plugin-buble';
 
 const pkg = require('./package.json');
 
@@ -12,7 +11,7 @@ export default {
 		{
 			file: pkg.main,
 			format: 'umd',
-			name: camelCase(pkg.name),
+			name: pkg.name,
 			sourcemap: true
 		},
 		{
