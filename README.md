@@ -41,7 +41,7 @@ mergeImages(['/want.png', '/eat.png', '/fries.png'], {
 
 And that would update the `img` element to show this image:
 
-<img src="/test/fixtures/result.png" width="128">
+<img src="/test/fixtures/result.png" width="512">
 
 ### Text font and color
 
@@ -63,7 +63,7 @@ mergeImages(['/want.png', '/eat.png', '/fries.png'], {
 
 Using the same source images as above would output this:
 
-<img src="/test/fixtures/result2.png" width="128">
+<img src="/test/fixtures/result2.png" width="512">
 
 ### Opacity
 
