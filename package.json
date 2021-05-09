@@ -12,8 +12,8 @@
     "prebuild": "rm -rf dist",
     "build": "rollup -c",
     "pretest": "npm run build",
-    "test": "nyc ava",
-    "coverage": "nyc report --reporter=text-lcov && ./node_modules/.bin/codecov",
+    "test": "nyc --reporter=lcov --reporter=text-summary ava",
+    "coverage": "nyc report --reporter=lcov > coverage.lcov && ./node_modules/.bin/codecov",
     "prelint": "npm run build",
     "lint": "xo",
     "prepublish": "npm run build"
