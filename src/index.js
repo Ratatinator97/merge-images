@@ -40,19 +40,21 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 	resolve(Promise.all(images)
 		.then(images => {
 			let maxheight = 0;
-			let x_value_of_image = 0;
+			let xValueOfImage = 0;
 
 			// Determine the height of the canvas
 			// Determine the x coordinate of every image
-			for (var i = 0; i < images.length; i++) {
-				images[i] = Object.assign(images[i], { x: x_value_of_image, y: 0 });
+			for (let i = 0; i < images.length; i++) {
+				images[i] = Object.assign(images[i], { x: xValueOfImage, y: 0 });
 				if (images[i].img.height >= maxheight) {
 					maxheight = images[i].img.height;
 				}
-				x_value_of_image += images[i].img.width;
+
+				xValueOfImage += images[i].img.width;
 			}
+
 			// Set canvas dimensions
-			canvas.width = x_value_of_image;
+			canvas.width = xValueOfImage;
 			canvas.height = maxheight;
 
 			// Fill the background of the canvas with color
@@ -60,6 +62,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 				ctx.fillStyle = options.color;
 				ctx.fillRect(0, 0, canvas.width, canvas.height);
 			}
+
 			// Draw images to canvas
 			images.forEach(image => {
 				ctx.globalAlpha = image.opacity ? image.opacity : 1;
@@ -80,11 +83,12 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 					canvas.toDataURL(options.format, {
 						quality: options.quality,
 						progressive: false
-					}, (err, jpeg) => {
-						if (err) {
-							reject(err);
+					}, (error, jpeg) => {
+						if (error) {
+							reject(error);
 							return;
 						}
+
 						resolve(jpeg);
 					});
 				});

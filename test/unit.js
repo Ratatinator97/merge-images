@@ -1,5 +1,5 @@
 import test from 'ava';
-import canvas from "canvas";
+import canvas from 'canvas';
 const { Canvas, Image } = canvas;
 import mergeImages from '../src/index.js';
 import * as fixtures from './fixtures/index.js';
@@ -12,15 +12,15 @@ test('mergeImages returns empty b64 string if nothing is passed in', async t => 
 test('mergeImages returns correct data URI', async t => {
 	t.plan(1);
 	const uris = ['want.png', 'eat.png', 'fries.png'];
-	let imagePromises = uris.map((uri) => {
-		return fixtures.getImage(uri)
+	const imagePromises = uris.map(uri => {
+		return fixtures.getImage(uri);
 	});
 
-	let images = await Promise.all(imagePromises);
+	const images = await Promise.all(imagePromises);
 
 	const b64 = await mergeImages(images, {
-		Canvas: Canvas,
-		Image: Image,
+		Canvas,
+		Image,
 		crossOrigin: 'Anonymous',
 		color: 'white',
 		text: 'Hello text'
@@ -34,14 +34,14 @@ test('mergeImages returns correct data URI', async t => {
 test('mergeImages returns correct data URI2', async t => {
 	t.plan(1);
 	const uris = ['want.png', 'eat.png', 'fries.png'];
-	let imagePromises = uris.map((uri) => {
-		return fixtures.getImage(uri)
+	const imagePromises = uris.map(uri => {
+		return fixtures.getImage(uri);
 	});
 
-	let images = await Promise.all(imagePromises);
+	const images = await Promise.all(imagePromises);
 	const b64 = await mergeImages(images, {
-		Canvas: Canvas,
-		Image: Image,
+		Canvas,
+		Image,
 		crossOrigin: 'Anonymous',
 		color: 'white',
 		fontColor: 'red',

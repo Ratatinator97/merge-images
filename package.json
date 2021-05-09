@@ -13,7 +13,7 @@
     "build": "rollup -c",
     "pretest": "npm run build",
     "test": "nyc ava",
-    "coverage": "nyc report --reporter=text-lcov",
+    "coverage": "nyc report --reporter=text-lcov && ./node_modules/.bin/codecov",
     "prelint": "npm run build",
     "lint": "xo",
     "prepublish": "npm run build"
@@ -44,6 +44,7 @@
     "@rollup/plugin-buble": "^0.21.3",
     "ava": "^3.15.0",
     "canvas": "^2.7.0",
+    "codecov": "^3.8.2",
     "datauri": "^3.0.0",
     "eslint-config-xo-lukechilds": "^1.0.1",
     "nyc": "^15.1.0",

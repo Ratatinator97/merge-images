@@ -1,5 +1,5 @@
 import test from 'ava';
-import canvas from "canvas";
+import canvas from 'canvas';
 const { Canvas, Image } = canvas;
 import mergeImages from '../src/index.js';
 
