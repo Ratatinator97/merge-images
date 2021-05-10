@@ -45,8 +45,6 @@ And that would update the `img` element to show this image:
 
 ### Text font and color
 
-Those source png images were already the right dimensions to be overlaid on top of each other. You can also supply an array of objects with x/y co-ords to manually position each image:
-
 ```js
 import mergeImages from 'merge-images-horizontally-with-text';
 
@@ -144,7 +142,7 @@ The `crossOrigin` attribute that `Image` instances should use. e.g `Anonymous` t
 ##### options.color
 
 Type `CSS Color` <br>
-default: `white`
+default: `undefined`
 
 The `color` background that  the final image will have.
 ##### options.text
