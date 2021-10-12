@@ -173,6 +173,27 @@ Default: `black`
 
 The color for the text.
 
+##### options.Xpadding
+
+Type `number` <br>
+Default: `50`
+
+Space in pixels between left border of canvas and text.
+
+##### options.Ypadding
+
+Type `number` <br>
+Default: `40`
+
+Space in pixels between bottom of image and text.
+
+##### options.YpaddingLines
+
+Type `number` <br>
+Default: `40`
+
+Space in pixels between lines.
+
 ## License
 
 MIT © Luke Childs + Alexandros SIDIRAS

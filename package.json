@@ -1,6 +1,6 @@
 {
   "name": "merge-images-horizontally-with-text",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Assemble horizontally images and write text ! Forked from the original merge-images",
   "main": "dist/index.umd.js",
   "module": "dist/index.es2015.js",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.3",
     "ava": "^3.15.0",
-    "canvas": "^2.7.0",
+    "canvas": "^2.8.0",
     "codecov": "^3.8.2",
     "datauri": "^3.0.0",
     "eslint-config-xo-lukechilds": "^1.0.1",
