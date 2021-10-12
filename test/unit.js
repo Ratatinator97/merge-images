@@ -47,7 +47,7 @@ test('mergeImages returns correct data URI2', async t => {
 		fontColor: 'red',
 		fontSize: '50px',
 		fontType: 'Montserrat',
-		text: 'Hello text'
+		text: 'Hello, this text is too long to fit in a single line, that is why we use a line breaking algorithm to correctly display this text',
 	});
 
 	const expectedB64 = await fixtures.getDataURI('result2.png');

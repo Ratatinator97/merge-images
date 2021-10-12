@@ -65,6 +65,9 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
         const textlength= ctx.measureText(options.text).width;
         nbrLines= Math.floor(textlength/xValueOfImage)+1;
       }
+	  if (options.fontSize){
+        options.YpaddingLines= parseInt(options.fontSize.replace('px',''));
+      }
       canvas.height = maxheight+(nbrLines * options.YpaddingLines) + options.Ypadding;
 
       // Fill the background of the canvas with color
