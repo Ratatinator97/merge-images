@@ -1,5 +1,3 @@
-const { Canvas, Image } = require('canvas');
-
 // Defaults
 const defaultOptions = {
   format: 'image/png',
@@ -104,21 +102,6 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
       return canvas.toDataURL(options.format, options.quality);
     }));
 });
-
-mergeImages(['./want.png', './eat.png', './fries.png'], {
-  color: 'white',
-  text: 'Hello text this text is probably too long and will get cut that is why i need to brake it into a second line so as to see the entire pictogram and the text now it is too long',
-  Image: Image,
-  Canvas: Canvas
-
-})
-  .then(b64 => {
-    const image = b64.replace(/^data:image\/png;base64,/, "");
-    fs.writeFile("out.png", image, 'base64', function (err) {
-      console.log(err);
-    });
-  }
-  );
 
 //Slightly modified version of Stack Overflow user Gabriele Petrioli
 //code found at http://jsfiddle.net/BaG4J/5/
