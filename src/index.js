@@ -159,3 +159,5 @@ function fillTextWordWrapping( context , text, x, y, lineHeight, fitWidth, optio
     if  (idx > 0)
         context.fillText( words.join(' '), x, y + (lineHeight*currentLine));
 }
+
+export default mergeImages;
