@@ -21,12 +21,11 @@ test('mergeImages returns correct data URI', async t => {
 	const b64 = await mergeImages(images, {
 		Canvas,
 		Image,
-		crossOrigin: 'Anonymous',
 		color: 'white',
-		text: 'Hello text'
+		text: 'I want to eat french fries'
 	});
 
-	const expectedB64 = await fixtures.getDataURI('result.png');
+	const expectedB64 = await fixtures.getDataURI('result1.png');
 
 	t.true(b64.trim() === expectedB64.trim());
 });
@@ -42,15 +41,31 @@ test('mergeImages returns correct data URI2', async t => {
 	const b64 = await mergeImages(images, {
 		Canvas,
 		Image,
-		crossOrigin: 'Anonymous',
 		color: 'white',
-		fontColor: 'red',
-		fontSize: '50px',
-		fontType: 'Montserrat',
-		text: 'Hello, this text is too long to fit in a single line, that is why we use a line breaking algorithm to correctly display this text',
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
 	});
 
 	const expectedB64 = await fixtures.getDataURI('result2.png');
+
+	t.true(b64.trim() === expectedB64.trim());
+});
+
+test('mergeImages returns correct data URI3', async t => {
+	t.plan(1);
+	const uris = ['hollydays.jpg'];
+	const imagePromises = uris.map(uri => {
+		return fixtures.getImage(uri);
+	});
+
+	const images = await Promise.all(imagePromises);
+	const b64 = await mergeImages(images, {
+		Canvas,
+		Image,
+		color: 'white',
+		text: "c'est les vacances",
+	});
+
+	const expectedB64 = await fixtures.getDataURI('result3.png');
 
 	t.true(b64.trim() === expectedB64.trim());
 });

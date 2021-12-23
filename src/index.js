@@ -55,8 +55,8 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
       }
 
       // Set canvas dimensions 
-
-      canvas.width = xValueOfImage;
+      canvas.width = xValueOfImage+(xValueOfImage/20);
+      options.Xpadding = xValueOfImage/20;
       let nbrLines = 1;
       if (options.text) {
         ctx.fillStyle = options.fontColor;
@@ -147,3 +147,4 @@ function fillTextWordWrapping( context , text, x, y, lineHeight, fitWidth, optio
 }
 
 export default mergeImages;
+
