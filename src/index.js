@@ -9,9 +9,9 @@ const defaultOptions = {
   fontSize: '36px',
   fontType: 'Serif',
   fontColor: 'black',
-  Xpadding : 50, // padding used to place text with Xpadding pixels after the left edge
-  YpaddingLines : 40, // padding of pixels in between lines
-  Ypadding : 40, // pixels of padding in between the images and the lines
+  Xpadding : null, // padding used to place text with Xpadding pixels after the left edge
+  YpaddingLines : 0, // padding of pixels in between lines
+  Ypadding : 0, // pixels of padding in between the images and the lines
 };
 // Return Promise
 const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
@@ -56,7 +56,11 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 
       // Set canvas dimensions 
       canvas.width = xValueOfImage+(xValueOfImage/20);
-      options.Xpadding = xValueOfImage/20;
+      const fontSize = parseInt(options.fontSize.replace('px', ''));
+      const Xpadding = options.Xpadding ? options.Xpadding : xValueOfImage/20;
+      const Ypadding= options.Ypadding + fontSize;
+      const YpaddingLines=options.YpaddingLines + fontSize
+      
       let nbrLines = 1;
       if (options.text) {
         ctx.fillStyle = options.fontColor;
@@ -65,10 +69,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
         const textlength= ctx.measureText(options.text).width;
         nbrLines= Math.floor(textlength/xValueOfImage)+1;
       }
-	  if (options.fontSize){
-        options.YpaddingLines= parseInt(options.fontSize.replace('px',''));
-      }
-      canvas.height = maxheight+(nbrLines * options.YpaddingLines) + options.Ypadding;
+      canvas.height = maxheight+(nbrLines * YpaddingLines) + Ypadding;
 
       // Fill the background of the canvas with color
       if (options.color) {
@@ -82,7 +83,7 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
         return ctx.drawImage(image.img, image.x || 0, image.y || 0);
       });
 
-      fillTextWordWrapping(ctx, options.text, options.Xpadding, maxheight + options.Ypadding, options.YpaddingLines ,xValueOfImage-options.Xpadding, options);
+      fillTextWordWrapping(ctx, options.text, Xpadding, maxheight + Ypadding, YpaddingLines ,xValueOfImage-Xpadding, options);
 
       if (options.Canvas && options.format === 'image/jpeg') {
         // Resolve data URI for node-canvas jpeg async

@@ -22,7 +22,13 @@ test('mergeImages returns correct data URI', async t => {
 		Canvas,
 		Image,
 		color: 'white',
-		text: 'I want to eat french fries'
+		text: "this is a test, testing is important. Yes it can sometimes be quite boring to make them but you thank yourself later",
+		fontSize: '36px',
+		fontType: 'Serif',
+		fontColor: 'black',
+		Xpadding : null, // padding used to place text with Xpadding pixels after the left edge
+		YpaddingLines : 0, // padding of pixels in between lines
+		Ypadding : 0, 
 	});
 
 	const expectedB64 = await fixtures.getDataURI('result1.png');
@@ -41,8 +47,14 @@ test('mergeImages returns correct data URI2', async t => {
 	const b64 = await mergeImages(images, {
 		Canvas,
 		Image,
-		color: 'white',
+		color: 'black',
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+		fontSize: '24px',
+		fontType: 'Helvetica',
+		fontColor: 'white',
+		Xpadding : null, // padding used to place text with Xpadding pixels after the left edge
+		YpaddingLines : 0, // padding of pixels in between lines
+		Ypadding : 20, 
 	});
 
 	const expectedB64 = await fixtures.getDataURI('result2.png');
@@ -62,7 +74,9 @@ test('mergeImages returns correct data URI3', async t => {
 		Canvas,
 		Image,
 		color: 'white',
-		text: "c'est les vacances",
+		text: "I'm on hollydays",
+		fontSize: '36px',
+		fontColor: 'red',
 	});
 
 	const expectedB64 = await fixtures.getDataURI('result3.png');
